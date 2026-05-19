@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <!-- PROFILE IMAGE -->
+
+        <div class="profile-image">
+
+            {% if faculty.profile_photo %}
+
+                <img src="{{ faculty.profile_photo.url }}"
+                     alt="Profile Photo">
+
+            {% else %}
+
+                <img src="{% static 'images/default_profile.png' %}"
+                     alt="Default Photo">
+
+            {% endif %}
+
+        </div>
+
+        <!-- PROFILE INFO -->
+
+        <div class="profile-info">
+
+            <h1>
+                {{ faculty.full_name }}
+            </h1>
+
+            <p>
+
+                <strong>Username:</strong>
+
+                {{ faculty.user.username }}
+
+            </p>
+
+            <p>
+
+                <strong>Email:</strong>
+
+                {{ faculty.user.email }}
+
+            </p>
+
+            <p>
+
+                <strong>Employee Code:</strong>
+
+                {{ faculty.employee_code }}
+
+            </p>
+
+            <p>
+
+                <strong>Department:</strong>
+
+                {{ faculty.department }}
+
+            </p>
+
+            <p>
+
+                <strong>Designation:</strong>
+
+                {{ faculty.designation }}
+
+            </p>
+
+            <p>
+
+                <strong>Phone:</strong>
+
+                {{ faculty.phone }}
+
+            </p>
+
+            <!-- EDIT BUTTON -->
+
+            <a href="{% url 'edit_profile' %}"
+               class="edit-btn">
+
+                Edit Profile
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

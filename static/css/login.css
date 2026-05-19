@@ -1,0 +1,150 @@
+/* ================= LOGIN PAGE BACKGROUND ================= */
+
+body{
+
+    background-image:
+    linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+    ),
+    url("/static/images/background2.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+}
+
+/* ================= LOGIN CONTAINER ================= */
+
+.login-container{
+
+    width: 380px;
+
+    margin: 80px auto;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+
+    animation: fadeUp 0.8s ease;
+}
+
+/* ================= TITLE ================= */
+
+.login-container h2{
+
+    color: white;
+
+    margin-bottom: 25px;
+
+    font-size: 32px;
+}
+
+/* ================= INPUTS ================= */
+
+.login-container input,
+.login-container select{
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 12px 0;
+
+    border: none;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: rgba(255,255,255,0.9);
+
+    font-size: 15px;
+}
+
+/* ================= BUTTON ================= */
+
+.login-container button{
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 15px;
+
+    background: #243447;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* HOVER */
+
+.login-container button:hover{
+
+    transform: translateY(-3px);
+
+    background: #1a2533;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ================= TEXT ================= */
+
+.login-container p{
+
+    margin-top: 20px;
+
+    color: white;
+}
+
+.login-container a{
+
+    color: #ffd369;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity: 0;
+
+        transform: translateY(40px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}

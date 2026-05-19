@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Reports{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/reports.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="reports-container">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="reports-header">
+
+        <h1>Faculty Reports</h1>
+
+        <p>
+
+            View your appraisal details and submission history
+
+        </p>
+
+    </div>
+
+    <!-- ================= FACULTY INFO ================= -->
+
+    <div class="faculty-info-card">
+
+        <h2>Faculty Information</h2>
+
+        <div class="faculty-info-grid">
+
+            <div class="info-box">
+
+                <h4>Full Name</h4>
+
+                <p>{{ faculty.full_name }}</p>
+
+            </div>
+
+            <div class="info-box">
+
+                <h4>Employee Code</h4>
+
+                <p>{{ faculty.employee_code }}</p>
+
+            </div>
+
+            <div class="info-box">
+
+                <h4>Department</h4>
+
+                <p>{{ faculty.department }}</p>
+
+            </div>
+
+            <div class="info-box">
+
+                <h4>Designation</h4>
+
+                <p>
+
+                    {% if faculty.designation %}
+                        {{ faculty.designation }}
+                    {% else %}
+                        Not Added
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= ACTIVITY SUMMARY ================= -->
+
+    <div class="activity-summary">
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-book"></i>
+
+            <h2>{{ publications.count }}</h2>
+
+            <p>Publications</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-microphone"></i>
+
+            <h2>{{ seminars.count }}</h2>
+
+            <p>Seminars</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-diagram-project"></i>
+
+            <h2>{{ projects.count }}</h2>
+
+            <p>Projects</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-chalkboard-user"></i>
+
+            <h2>{{ lectures.count }}</h2>
+
+            <p>Lectures</p>
+
+        </div>
+
+    </div>
+
+    <!-- ================= SUBMISSION HISTORY ================= -->
+
+    <div class="reports-table-container">
+
+        <div class="table-header">
+
+            <h2>Submission History</h2>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Submission Date</th>
+
+                    <th>Status</th>
+
+                    <th>Admin Remark</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for submission in submissions %}
+
+                <tr>
+
+                    <!-- DATE -->
+
+                    <td>
+
+                        {{ submission.submission_date }}
+
+                    </td>
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if submission.status == 'Approved' %}
+
+                            <span class="status approved">
+
+                                Approved
+
+                            </span>
+
+                        {% elif submission.status == 'Rejected' %}
+
+                            <span class="status rejected">
+
+                                Rejected
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="status pending">
+
+                                Pending
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- REMARK -->
+
+                    <td>
+
+                        {% if submission.admin_remarks %}
+
+                            {{ submission.admin_remarks }}
+
+                        {% else %}
+
+                            No remarks yet
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="3">
+
+                        No reports available.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

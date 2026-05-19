@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="edit-profile-container">
+
+    <div class="edit-profile-card">
+
+        <h1>Edit Profile</h1>
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <!-- FULL NAME -->
+
+            <div class="input-group">
+
+                <label>Full Name</label>
+
+                <input type="text"
+                       name="full_name"
+                       value="{{ faculty.full_name }}">
+
+            </div>
+
+            <!-- DEPARTMENT -->
+
+            <div class="input-group">
+
+                <label>Department</label>
+
+                <input type="text"
+                       name="department"
+                       value="{{ faculty.department }}">
+
+            </div>
+
+            <!-- DESIGNATION -->
+
+            <div class="input-group">
+
+                <label>Designation</label>
+
+                <input type="text"
+                       name="designation"
+                       value="{{ faculty.designation }}">
+
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="input-group">
+
+                <label>Phone Number</label>
+
+                <input type="text"
+                       name="phone"
+                       value="{{ faculty.phone }}">
+
+            </div>
+
+            <!-- PROFILE PHOTO -->
+
+            <div class="input-group">
+
+                <label>Profile Photo</label>
+
+                <input type="file"
+                       name="profile_photo">
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="save-btn">
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

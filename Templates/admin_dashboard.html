@@ -1,0 +1,410 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-dashboard">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="admin-header">
+
+        <h1>Admin Dashboard</h1>
+
+        <p>
+            Faculty Self Appraisal Management System
+        </p>
+
+    </div>
+
+    <!-- ================= STATS ================= -->
+
+    <div class="admin-stats">
+
+        <!-- TOTAL FACULTY -->
+
+        <div class="admin-card">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            <h2>
+                {{ total_faculty }}
+            </h2>
+
+            <p>Total Faculty</p>
+
+        </div>
+
+        <!-- TOTAL PUBLICATIONS -->
+
+        <div class="admin-card">
+
+            <i class="fa-solid fa-book"></i>
+
+            <h2>
+                {{ total_publications }}
+            </h2>
+
+            <p>Total Publications</p>
+
+        </div>
+
+        <!-- TOTAL PROJECTS -->
+
+        <div class="admin-card">
+
+            <i class="fa-solid fa-diagram-project"></i>
+
+            <h2>
+                {{ total_projects }}
+            </h2>
+
+            <p>Total Projects</p>
+
+        </div>
+
+        <!-- TOTAL SUBMISSIONS -->
+
+        <div class="admin-card">
+
+            <i class="fa-solid fa-file-circle-check"></i>
+
+            <h2>
+                {{ total_submissions }}
+            </h2>
+
+            <p>Total Submissions</p>
+
+        </div>
+
+        <!-- APPROVED -->
+
+        <div class="admin-card approved-card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h2>
+                {{ approved_submissions }}
+            </h2>
+
+            <p>Approved</p>
+
+        </div>
+
+        <!-- PENDING -->
+
+        <div class="admin-card pending-card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h2>
+                {{ pending_submissions }}
+            </h2>
+
+            <p>Pending</p>
+
+        </div>
+
+        <!-- REJECTED -->
+
+        <div class="admin-card rejected-card">
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+            <h2>
+                {{ rejected_submissions }}
+            </h2>
+
+            <p>Rejected</p>
+
+        </div>
+
+    </div>
+
+    <!-- ================= TABLE CONTAINER ================= -->
+
+    <div class="submission-table-container">
+
+        <h2>Faculty Submissions</h2>
+
+        <!-- ================= SEARCH + SORT ================= -->
+
+        <div class="filter-bar">
+
+            <form method="GET">
+
+                <!-- SEARCH -->
+
+                <input type="text"
+                       name="search"
+                       placeholder="Search by name or employee code"
+                       value="{{ search_query }}">
+
+                <!-- SORT -->
+
+                <select name="sort">
+
+                    <option value="-submission_date">
+
+                        Latest Submission
+
+                    </option>
+
+                    <option value="name"
+
+                    {% if sort_by == 'name' %}
+                        selected
+                    {% endif %}>
+
+                        Faculty Name
+
+                    </option>
+
+                    <option value="employee_code"
+
+                    {% if sort_by == 'employee_code' %}
+                        selected
+                    {% endif %}>
+
+                        Employee Code
+
+                    </option>
+
+                    <option value="approved"
+
+                    {% if sort_by == 'approved' %}
+                        selected
+                    {% endif %}>
+
+                        Approved Only
+
+                    </option>
+
+                    <option value="pending"
+
+                    {% if sort_by == 'pending' %}
+                        selected
+                    {% endif %}>
+
+                        Pending Only
+
+                    </option>
+
+                    <option value="rejected"
+
+                    {% if sort_by == 'rejected' %}
+                        selected
+                    {% endif %}>
+
+                        Rejected Only
+
+                    </option>
+
+                </select>
+
+                <!-- BUTTON -->
+
+                <button type="submit">
+
+                    Apply
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- ================= TABLE ================= -->
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Faculty Name</th>
+
+                    <th>Employee Code</th>
+
+                    <th>Department</th>
+
+                    <th>Status</th>
+
+                    <th>Submission Date</th>
+
+                    <th>Admin Action</th>
+
+                    <th>PDF</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for submission in submissions %}
+
+                <tr>
+
+                    <!-- NAME -->
+
+                    <td>
+                        {{ submission.faculty.full_name }}
+                    </td>
+
+                    <!-- EMPLOYEE CODE -->
+
+                    <td>
+                        {{ submission.faculty.employee_code }}
+                    </td>
+
+                    <!-- DEPARTMENT -->
+
+                    <td>
+                        {{ submission.faculty.department }}
+                    </td>
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if submission.status == 'Approved' %}
+
+                            <span class="status approved">
+
+                                Approved
+
+                            </span>
+
+                        {% elif submission.status == 'Rejected' %}
+
+                            <span class="status rejected">
+
+                                Rejected
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="status pending">
+
+                                Pending
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- DATE -->
+
+                    <td>
+                        {{ submission.submission_date }}
+                    </td>
+
+                    <!-- ACTION -->
+
+                    <td>
+
+                        <form method="POST"
+                              action="{% url 'update_submission_status' submission.id %}">
+
+                            {% csrf_token %}
+
+                            <!-- STATUS -->
+
+                            <select name="status">
+
+                                <option value="Pending"
+
+                                {% if submission.status == 'Pending' %}
+                                    selected
+                                {% endif %}>
+
+                                    Pending
+
+                                </option>
+
+                                <option value="Approved"
+
+                                {% if submission.status == 'Approved' %}
+                                    selected
+                                {% endif %}>
+
+                                    Approved
+
+                                </option>
+
+                                <option value="Rejected"
+
+                                {% if submission.status == 'Rejected' %}
+                                    selected
+                                {% endif %}>
+
+                                    Rejected
+
+                                </option>
+
+                            </select>
+
+                            <!-- REMARK -->
+
+                            <textarea name="remark"
+                                      placeholder="Admin Remark">{{ submission.admin_remarks }}</textarea>
+
+                            <!-- BUTTON -->
+
+                            <button type="submit">
+
+                                Update
+
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                    <!-- PDF -->
+
+                    <td>
+
+                        <a href="{% url 'download_pdf' submission.id %}"
+                           class="pdf-btn">
+
+                            Download PDF
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="7">
+
+                        No submissions found.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+
+        body{
+            font-family: Arial;
+        }
+
+        h1{
+            color: #243447;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td{
+            border: 1px solid black;
+        }
+
+        th, td{
+            padding: 10px;
+            text-align: left;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Faculty Self Appraisal Report</h1>
+
+    <table>
+
+        <tr>
+            <th>Faculty Name</th>
+            <td>{{ submission.faculty.full_name }}</td>
+        </tr>
+
+        <tr>
+            <th>Employee Code</th>
+            <td>{{ submission.faculty.employee_code }}</td>
+        </tr>
+
+        <tr>
+            <th>Department</th>
+            <td>{{ submission.faculty.department }}</td>
+        </tr>
+
+        <tr>
+            <th>Status</th>
+            <td>{{ submission.status }}</td>
+        </tr>
+
+        <tr>
+            <th>Submission Date</th>
+            <td>{{ submission.submission_date }}</td>
+        </tr>
+
+        <tr>
+            <th>Admin Remarks</th>
+            <td>{{ submission.admin_remarks }}</td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

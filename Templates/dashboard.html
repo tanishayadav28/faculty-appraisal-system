@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Faculty Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- HEADER -->
+
+    <div class="dashboard-header">
+
+        <h1>
+
+            Welcome,
+            {{ faculty.full_name }}
+
+        </h1>
+
+        <p>
+
+            Faculty Self Appraisal Dashboard
+
+        </p>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="dashboard-stats">
+
+        <!-- PUBLICATIONS -->
+
+        <div class="dashboard-card">
+
+            <i class="fa-solid fa-book"></i>
+
+            <h2>
+
+                {{ total_publications }}
+
+            </h2>
+
+            <p>
+
+                Publications
+
+            </p>
+
+        </div>
+
+        <!-- SEMINARS -->
+
+        <div class="dashboard-card">
+
+            <i class="fa-solid fa-users"></i>
+
+            <h2>
+
+                {{ total_seminars }}
+
+            </h2>
+
+            <p>
+
+                Seminars
+
+            </p>
+
+        </div>
+
+        <!-- PROJECTS -->
+
+        <div class="dashboard-card">
+
+            <i class="fa-solid fa-diagram-project"></i>
+
+            <h2>
+
+                {{ total_projects }}
+
+            </h2>
+
+            <p>
+
+                Projects
+
+            </p>
+
+        </div>
+
+        <!-- LECTURES -->
+
+        <div class="dashboard-card">
+
+            <i class="fa-solid fa-chalkboard-user"></i>
+
+            <h2>
+
+                {{ total_lectures }}
+
+            </h2>
+
+            <p>
+
+                Lectures
+
+            </p>
+
+        </div>
+
+        <!-- SUBMISSIONS -->
+
+        <div class="dashboard-card">
+
+            <i class="fa-solid fa-file-circle-check"></i>
+
+            <h2>
+
+                {{ total_submissions }}
+
+            </h2>
+
+            <p>
+
+                Submissions
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

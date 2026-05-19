@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Faculty Appraisal
+        {% endblock %}
+    </title>
+
+    {% load static %}
+
+    <!-- GLOBAL CSS -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/global.css' %}">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- PAGE CSS -->
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+
+        <!-- Logo -->
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>Faculty Appraisal System</h2>
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+ <nav id="nav-links">
+
+    {% if request.user.is_authenticated %}
+
+        <!-- ================= ADMIN NAVBAR ================= -->
+
+        {% if request.user.is_staff %}
+
+            <a href="{% url 'admin_dashboard' %}">
+                Admin Dashboard
+            </a>
+
+        {% else %}
+
+        <!-- ================= FACULTY NAVBAR ================= -->
+
+            <a href="{% url 'faculty_dashboard' %}">
+                Dashboard
+            </a>
+
+            <a href="{% url 'profile' %}">
+                Profile
+            </a>
+
+            <a href="{% url 'self_appraisal_form' %}">
+                Self Appraisal
+            </a>
+
+            <a href="{% url 'my_submissions' %}">
+                My Submissions
+            </a>
+
+            <a href="{% url 'reports' %}">
+                Reports
+            </a>
+
+        {% endif %}
+
+        <!-- COMMON LOGOUT -->
+
+        <a href="{% url 'logout' %}"
+           class="logout-btn">
+
+            Logout
+
+        </a>
+
+    {% endif %}
+
+</nav>
+
+    </header>
+    <!-- ================= ALERT MESSAGES ================= -->
+
+    {% if messages %}
+
+        <div class="message-container">
+
+            {% for message in messages %}
+
+                <div class="alert {{ message.tags }}">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    </script>
+
+</body>
+</html>

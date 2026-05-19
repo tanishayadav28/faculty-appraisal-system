@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Self Appraisal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Self Appraisal Form</h2>
+    {% if success %}
+    <p class="success-message">
+        {{ success }}
+    </p>
+{% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <!-- BASIC INFO -->
+
+        <div class="form-section">
+
+            <h3>Basic Information</h3>
+
+            <input type="text"
+                   name="full_name"
+                   placeholder="Full Name"
+                   required>
+
+            <input type="text"
+                   name="employee_code"
+                   placeholder="Employee Code"
+                   required>
+
+        </div>
+
+        <!-- PUBLICATIONS -->
+
+        <div class="form-section">
+
+            <h3>Research Publication</h3>
+
+            <input type="text"
+                   name="publication_title"
+                   placeholder="Publication Title">
+
+            <input type="text"
+                   name="journal_name"
+                   placeholder="Journal Name">
+
+            <input type="date"
+                   name="publication_date">
+
+        </div>
+
+        <!-- SEMINARS -->
+
+        <div class="form-section">
+
+            <h3>Seminars / Events</h3>
+
+            <input type="text"
+                   name="seminar_name"
+                   placeholder="Seminar/Event Name">
+
+            <input type="text"
+                   name="organized_by"
+                   placeholder="Organized By">
+
+            <input type="date"
+                   name="seminar_date">
+
+        </div>
+
+        <!-- PROJECTS -->
+
+        <div class="form-section">
+
+            <h3>Projects</h3>
+
+            <input type="text"
+                   name="project_title"
+                   placeholder="Project Title">
+
+            <textarea name="project_description"
+                      placeholder="Project Description">
+            </textarea>
+
+        </div>
+
+        <!-- LECTURES -->
+
+        <div class="form-section">
+
+            <h3>Lectures</h3>
+
+            <input type="text"
+                   name="lecture_topic"
+                   placeholder="Lecture Topic">
+
+            <input type="date"
+                   name="lecture_date">
+
+        </div>
+
+        <button type="submit">
+            Submit Appraisal
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

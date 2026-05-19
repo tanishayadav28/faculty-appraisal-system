@@ -1,0 +1,200 @@
+/* ================= PAGE BACKGROUND ================= */
+
+body{
+
+    background-image:
+    linear-gradient(
+        rgba(255,255,255,0.75),
+        rgba(255,255,255,0.75)
+    ),
+    url("../images/submission_bg.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+/* ================= PAGE CONTAINER ================= */
+
+.submissions-page{
+
+    width: 95%;
+
+    margin: auto;
+
+    padding: 40px 0;
+
+    animation: fadeUp 0.8s ease;
+}
+
+/* ================= HEADER ================= */
+
+.page-header{
+
+    margin-bottom: 30px;
+}
+
+.page-header h1{
+
+    color: #243447;
+
+    margin-bottom: 10px;
+
+    font-size: 36px;
+}
+
+.page-header p{
+
+    color: #444;
+
+    font-size: 16px;
+}
+
+/* ================= TABLE CONTAINER ================= */
+
+.submission-table-container{
+
+    background: rgba(255,255,255,0.95);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    overflow-x: auto;
+}
+
+/* ================= TABLE ================= */
+
+table{
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+/* ================= TABLE HEADER ================= */
+
+table th{
+
+    background: #243447;
+
+    color: white;
+
+    padding: 16px;
+
+    text-align: left;
+
+    font-size: 15px;
+}
+
+/* ================= TABLE DATA ================= */
+
+table td{
+
+    padding: 16px;
+
+    border-bottom: 1px solid #ddd;
+
+    color: #333;
+
+    font-size: 15px;
+}
+
+/* ================= ROW HOVER ================= */
+
+table tr:hover{
+
+    background: #f5f7fa;
+}
+
+/* ================= STATUS ================= */
+
+.status{
+
+    padding: 7px 15px;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    display: inline-block;
+}
+
+/* APPROVED */
+
+.status.approved{
+
+    background: #d4edda;
+
+    color: #155724;
+}
+
+/* PENDING */
+
+.status.pending{
+
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+/* REJECTED */
+
+.status.rejected{
+
+    background: #f8d7da;
+
+    color: #721c24;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity: 0;
+
+        transform: translateY(40px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media screen and (max-width: 768px){
+
+    .page-header h1{
+
+        font-size: 28px;
+    }
+
+    table th,
+    table td{
+
+        padding: 12px;
+
+        font-size: 14px;
+    }
+
+    .submission-table-container{
+
+        padding: 20px;
+    }
+}

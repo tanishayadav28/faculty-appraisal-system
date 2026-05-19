@@ -1,0 +1,334 @@
+/* ================= PAGE BACKGROUND ================= */
+
+body{
+
+    background-image:
+    linear-gradient(
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.25)
+    ),
+    url("../images/background2.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+/* ================= REPORT PAGE ================= */
+
+.reports-container{
+
+    width: 95%;
+
+    margin: auto;
+
+    padding: 40px 0;
+
+    animation: fadeUp 0.8s ease;
+}
+
+/* ================= HEADER ================= */
+
+.reports-header{
+
+    margin-bottom: 35px;
+}
+
+.reports-header h1{
+
+    font-size: 38px;
+
+    color: #243447;
+
+    margin-bottom: 10px;
+}
+
+.reports-header p{
+
+    color: #444;
+
+    font-size: 16px;
+}
+
+/* ================= FACULTY INFO ================= */
+
+.faculty-info-card{
+
+    background: rgba(255,255,255,0.95);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    margin-bottom: 35px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.faculty-info-card h2{
+
+    color: #243447;
+
+    margin-bottom: 25px;
+}
+
+.faculty-info-grid{
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.info-box{
+
+    background: #243447;
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    transition: 0.3s;
+}
+
+.info-box:hover{
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.info-box h4{
+
+    color: white;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+}
+
+.info-box p{
+
+    color: white;
+
+    font-size: 15px;
+}
+
+/* ================= ACTIVITY SUMMARY ================= */
+
+.activity-summary{
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+    margin-bottom: 40px;
+}
+
+.summary-card{
+
+    background: rgba(255,255,255,0.95);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    transition: 0.3s;
+}
+
+.summary-card:hover{
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.summary-card i{
+
+    font-size: 42px;
+
+    color: #243447;
+
+    margin-bottom: 15px;
+}
+
+.summary-card h2{
+
+    font-size: 34px;
+
+    color: #243447;
+
+    margin-bottom: 10px;
+}
+
+.summary-card p{
+
+    color: #666;
+}
+
+/* ================= TABLE ================= */
+
+.reports-table-container{
+
+    background: rgba(255,255,255,0.95);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    overflow-x: auto;
+}
+
+.table-header{
+
+    margin-bottom: 25px;
+}
+
+.table-header h2{
+
+    color: #243447;
+}
+
+table{
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+table th{
+
+    background: #243447;
+
+    color: white;
+
+    padding: 15px;
+
+    text-align: left;
+}
+
+table td{
+
+    padding: 15px;
+
+    border-bottom: 1px solid #ddd;
+
+    color: #333;
+}
+
+table tr:hover{
+
+    background: #f4f6fa;
+}
+
+/* ================= STATUS ================= */
+
+.status{
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    display: inline-block;
+}
+
+.status.approved{
+
+    background: #d4edda;
+
+    color: #155724;
+}
+
+.status.pending{
+
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+.status.rejected{
+
+    background: #f8d7da;
+
+    color: #721c24;
+}
+
+/* ================= EMPTY ================= */
+
+table td[colspan="3"]{
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #777;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity: 0;
+
+        transform: translateY(40px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media screen and (max-width: 768px){
+
+    .reports-container{
+
+        width: 100%;
+    }
+
+    .reports-header h1{
+
+        font-size: 30px;
+    }
+
+    .faculty-info-card,
+    .reports-table-container{
+
+        padding: 20px;
+    }
+
+    table th,
+    table td{
+
+        padding: 12px;
+
+        font-size: 14px;
+    }
+}

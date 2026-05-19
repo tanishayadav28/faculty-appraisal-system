@@ -1,0 +1,100 @@
+.register-container{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 0;
+}
+
+.register-card{
+    width: 90%;
+    max-width: 500px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.register-card h1{
+    text-align: center;
+    color: #243447;
+
+    margin-bottom: 30px;
+}
+
+.input-group{
+    margin-bottom: 20px;
+}
+
+.input-group label{
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #243447;
+    font-weight: 600;
+}
+
+.input-group input,
+.input-group select{
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+    border-color: #4CAF50;
+}
+
+.register-btn{
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    background: #243447;
+    color: white;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.register-btn:hover{
+    background: #4CAF50;
+}
+
+.login-link{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-link a{
+    color: #243447;
+    font-weight: bold;
+    text-decoration: none;
+}
+.error-message{
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+}

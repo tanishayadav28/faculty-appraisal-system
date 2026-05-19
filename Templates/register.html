@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="register-container">
+
+    <div class="register-card">
+
+        <h1>Create Account</h1>
+
+        <!-- ERROR MESSAGE -->
+
+        {% if error %}
+            <p class="error-message">
+                {{ error }}
+            </p>
+        {% endif %}
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- FULL NAME -->
+
+            <div class="input-group">
+                <label>Full Name</label>
+
+                <input type="text"
+                       name="full_name"
+                       required>
+            </div>
+
+            <!-- USERNAME -->
+
+            <div class="input-group">
+                <label>Username</label>
+
+                <input type="text"
+                       name="username"
+                       required>
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+                <label>Email</label>
+
+                <input type="email"
+                       name="email"
+                       required>
+            </div>
+
+            <!-- EMPLOYEE CODE -->
+
+            <div class="input-group">
+                <label>Employee Code</label>
+
+                <input type="text"
+                       name="employee_code"
+                       required>
+            </div>
+
+            <!-- DEPARTMENT -->
+
+            <div class="input-group">
+
+                <label>Department</label>
+
+                <select name="department" required>
+
+                    <option value="">
+                        -- Select Department --
+                    </option>
+
+                    <option>CSE</option>
+
+                    <option>IT</option>
+
+                    <option>ECE</option>
+
+                    <option>EE</option>
+
+                    <option>ME</option>
+
+                    <option>CE</option>
+
+                </select>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+                <label>Password</label>
+
+                <input type="password"
+                       name="password"
+                       required>
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+
+                <input type="password"
+                       name="confirm_password"
+                       required>
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="register-btn">
+
+                Register
+
+            </button>
+
+        </form>
+
+        <!-- LOGIN LINK -->
+
+        <p class="login-link">
+
+            Already have an account?
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
