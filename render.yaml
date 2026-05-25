@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: faculty-appraisal-system
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn Faculty_Appraisal_System.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: False
